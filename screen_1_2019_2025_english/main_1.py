@@ -8,7 +8,7 @@ from utils_1 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
 DEFAULT_OUTPUT = "data/screen_stage1.csv"
-DEFAULT_SYSTEM_PROMPT = "system_prompt.txt"
+DEFAULT_SYSTEM_PROMPT = "system_prompt_1.txt"
 
 def read_system_prompt(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
