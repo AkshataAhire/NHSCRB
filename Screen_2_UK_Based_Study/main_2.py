@@ -46,7 +46,7 @@ def main():
     # ---- 4) Iterate rows ----
     for idx, row in df.iterrows():
         # Required columns in sample_articles.csv
-        uid = row["Unique_ID"]
+        uid = row["id"]
         title = row.get("Title", "")
         abstract = row.get("Abstract", "")
 
