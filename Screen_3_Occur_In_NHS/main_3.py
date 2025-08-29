@@ -38,7 +38,7 @@ def main():
 
     rows = []
     for idx, row in df.iterrows():
-        uid = row["Unique_ID"]
+        uid = row["id"]
         title = row.get("Title", "")
         abstract = row.get("Abstract", "")
         metadata = {k: (None if pd.isna(v) else v) for k, v in row.to_dict().items()}
@@ -48,14 +48,14 @@ def main():
 
         parsed = safe_json_loads(raw) or {}
         normalized = normalize_result(parsed)
-        normalized["Unique_ID"] = uid
+        normalized["id"] = uid
         rows.append(normalized)
 
         if args.sleep > 0:
             time.sleep(args.sleep)
 
     res = pd.DataFrame(rows)
-    out = df.merge(res, on="Unique_ID", how="left")
+    out = df.merge(res, on="id", how="left")
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     out.to_csv(args.output, index=False)
