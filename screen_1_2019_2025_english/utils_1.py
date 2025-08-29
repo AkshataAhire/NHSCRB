@@ -27,7 +27,7 @@ def build_user_prompt(unique_id: str, year: Any, title: str, abstract: str) -> s
     if title:
         lines.append(f"Title: {title}")
     if abstract:
-        lines.append(f"Abstract: {abstract[:4000]}")  # cap length
+        lines.append(f"Abstract: {abstract}")  # cap length
 
     lines.append("\nTASK: Determine if the article is in English and published 2019–2025, return STRICT JSON per schema.")
     return "\n".join(lines)
