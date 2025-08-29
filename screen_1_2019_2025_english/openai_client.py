@@ -11,7 +11,7 @@ def create_openai_client():
         api_key = os.getenv("OPENAI_API_KEY")
         return OpenAI(api_key=api_key)
     """
-    return OpenAI(api_key="API KEY")  # <-- TEMP for testing only
+    return OpenAI(api_key="OPENAI_API_KEY")  # <-- TEMP for testing only
 
 
 def call_gpt_api(client, system_prompt, user_prompt, model="gpt-4o", max_retries=3):
