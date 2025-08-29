@@ -1,0 +1,16 @@
+ cd "C:\Users\NM2.TP5IJ4AX\OneDrive - NHS\Documents\Projects"
+
+git clone -b dev https://github.com/AkshataAhire/NHSCRB.git NHSCRB
+
+cd "C:\Users\NM2.TP5IJ4AX\OneDrive - NHS\Documents\Projects\NHSCRB\screen_1_2019_2025_English"
+
+ python -m venv .venv     
+
+.\.venv\Scripts\activate.bat 
+
+ pip install openai pandas python-dotenv
+
+$env:OPENAI_API_KEY="API"
+
+python .\main_1.py --input .\data\sample_articles.csv --output .\data\screen_stage1.csv --sleep 0.3
+
