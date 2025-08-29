@@ -7,6 +7,10 @@ Inclusion criteria:
 
 ---
 
+## Workflow diagram
+<img width="1731" height="714" alt="image" src="https://github.com/user-attachments/assets/0ac08b56-3654-4338-9c59-bd5d95912e23" />
+
+
 ## File Descriptions
 
 | File / Folder        | Description                                                                 |
