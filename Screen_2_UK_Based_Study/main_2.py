@@ -9,7 +9,7 @@ import pandas as pd
 from openai_client import create_openai_client, call_gpt_api
 from utils_2 import build_user_prompt, safe_json_loads, normalize_result
 
-DEFAULT_INPUT = "data/sample_articles.csv"
+DEFAULT_INPUT = "data/361_articles_post_stage1_screen.csv"
 DEFAULT_OUTPUT = "data/screen_stage2_uk.csv"
 DEFAULT_SYSTEM_PROMPT = "system_prompt_2.txt"
 DEFAULT_MODEL = "gpt-4o"
