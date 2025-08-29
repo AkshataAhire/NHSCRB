@@ -54,7 +54,7 @@ def build_user_prompt(
     location/setting metadata to help the model decide UK vs Not UK.
     """
     lines = []
-    lines.append(f"ARTICLE ID: {unique_id}")
+    lines.append(f"ARTICLE ID: {id}")
     if title:
         lines.append(f"Title: {title}")
 
