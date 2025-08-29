@@ -72,7 +72,7 @@ def main():
         # Parse & normalize model output
         parsed = safe_json_loads(raw) or {}
         normalized = normalize_result(parsed)
-        normalized["Unique_ID"] = uid
+        normalized["id"] = uid
 
         results.append(normalized)
 
@@ -81,7 +81,7 @@ def main():
 
     # ---- 5) Merge results back to input ----
     res_df = pd.DataFrame(results)
-    merged = df.merge(res_df, on="Unique_ID", how="left")
+    merged = df.merge(res_df, on="id", how="left")
 
     # ---- 6) Save ----
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
