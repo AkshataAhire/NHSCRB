@@ -25,7 +25,7 @@ Inclusion criteria:
 
 ---
 
-## ⚙️ Workflow
+## Workflow
 
 1. **Input** → `sample_articles.csv`  
    Columns: `Unique_ID`, `Year`, `Title`, `Abstract`
@@ -47,7 +47,7 @@ Inclusion criteria:
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 1. Activate environment
 cd "C:\Users\NM2.TP5IJ4AX\OneDrive - NHS\Documents\Projects\NHSCRB\screen_1_2019_2025_English"
@@ -64,7 +64,7 @@ python main_1.py --input data\sample_articles.csv --output data\screen_stage1.cs
 --system system_prompt_1.txt → custom system prompt
 --sleep 0.5 → add delay between calls
 
-## 🔍 Example
+## Example
 
 ### Input:
 Unique_ID,Year,Title,Abstract
