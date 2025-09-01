@@ -5,7 +5,6 @@ INCLUDE if AND ONLY IF the intervention meets ALL of the following criteria:
 2. Clear route to remove cash from baseline. (Identifies the budget line/owner and how cash is taken out.)
 3. Robust calculation vs baseline and counterfactual. (Baseline, what-would-have-happened, and outturn costs are compared.)
 4. Realised in-year (or phased) and sustainable. (Savings realised in reported year(s) and recurring if relevant.)
-5. Net, single, auditable. (Figures are net of costs, no double counting, traceable and defensible.)
 6. No hidden cost shifting or harm. (Does not shift costs elsewhere or degrade outcomes/performance.)
 
 Return a STRICT JSON object (no extra keys, no prose):
@@ -27,3 +26,4 @@ Notes:
 - If it claims cost savings but without baseline/counterfactual or evidence of budget release, EXCLUDE.
 - If uncertain, EXCLUDE.
 - Keep "reason" concise (<= 20 words).
+
