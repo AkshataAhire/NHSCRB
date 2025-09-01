@@ -27,7 +27,7 @@ pip install -r ..\requirements.txt
 $env:OPENAI_API_KEY="sk-your-api-key-here"
 
 # 8. Run the screening script
-python .\main_2.py --input .\data\361_articles_post_stage1_screening.csv --output .\data\screen_stage2.csv --sleep 0.3
+python .\main_2.py --input .\data\361_articles_post_stage1_screen.csv --output .\data\screen_stage2.csv --sleep 0.3
 
 # Optional flags:
 #   --limit 5            process only first 5 rows
