@@ -1,16 +1,12 @@
-# main_3.py — Stage 3: Occurs in NHS / health & social care / community health settings
+# main_4.py — Stage 4 screening: “Cash-releasing benefits”
 
-import os
-import time
-import argparse
-import pandas as pd
-
+import os, time, argparse, pandas as pd
 from openai_client import create_openai_client, call_gpt_api
-from utils_3 import build_user_prompt, safe_json_loads, normalize_result
+from utils_4 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage3_occurs_in_nhs.csv"
-DEFAULT_SYSTEM = "system_prompt_3.txt"
+DEFAULT_OUTPUT = "data/screen_stage4_cash.csv"
+DEFAULT_SYSTEM = "system_prompt_4.txt"
 DEFAULT_MODEL = "gpt-4o"
 
 def read_system_prompt(path: str) -> str:
@@ -18,9 +14,7 @@ def read_system_prompt(path: str) -> str:
         return f.read()
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Stage 3 screening: occurs in NHS / health & social care / community health settings"
-    )
+    parser = argparse.ArgumentParser(description="Stage 4: Cash-releasing benefits")
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
     parser.add_argument("--system", default=DEFAULT_SYSTEM)
@@ -36,9 +30,9 @@ def main():
     system_prompt = read_system_prompt(args.system)
     client = create_openai_client()
 
-    rows = []
-    for idx, row in df.iterrows():
-        uid = row["id"]
+    results = []
+    for _, row in df.iterrows():
+        uid = row["Unique_ID"]
         title = row.get("Title", "")
         abstract = row.get("Abstract", "")
         metadata = {k: (None if pd.isna(v) else v) for k, v in row.to_dict().items()}
@@ -48,18 +42,18 @@ def main():
 
         parsed = safe_json_loads(raw) or {}
         normalized = normalize_result(parsed)
-        normalized["id"] = uid
-        rows.append(normalized)
+        normalized["Unique_ID"] = uid
+        results.append(normalized)
 
         if args.sleep > 0:
             time.sleep(args.sleep)
 
-    res = pd.DataFrame(rows)
-    out = df.merge(res, on="id", how="left")
+    res_df = pd.DataFrame(results)
+    merged = df.merge(res_df, on="Unique_ID", how="left")
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
-    out.to_csv(args.output, index=False)
-    print(f"✅ Stage 3 screening complete. Wrote: {args.output}")
+    merged.to_csv(args.output, index=False)
+    print(f"✅ Stage 4 screening complete. Wrote: {args.output}")
 
 if __name__ == "__main__":
     main()
