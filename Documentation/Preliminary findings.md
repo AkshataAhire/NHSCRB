@@ -11,20 +11,20 @@
 ### Stage 1 – English language & publication year (2019–2025)
 - Included: **358**
 - Excluded: **3**
-- % excluded: `358 / 361 × 100`
-- Projected exclusions (of 6,317): `358 / 361 × 6317`
+- % included: `358 / 361 × 100 = 99.1%`
+- Projected inclusions (of 6,317): `358 / 361 × 6317 = 6265 Articles`
 
 ### Stage 2 – UK study or applied to UK setting
 - Included: **181**
 - Excluded: **177**
-- % excluded: `181 / 358 × 100`
-- Projected exclusions (of 6,317): `181 / 358 × 6317`
+- % included: `181 / 358 × 100 = 50.55%`
+- Projected inclusions (of remaining 6,265): `181 / 358 × 6317 = 3168 Articles`
 
 ### Stage 3 – Occurs in NHS / health & social care / community health setting
 - Included: **168**
 - Excluded: **13**
-- % excluded: `168 / 181 × 100`
-- Projected exclusions (of 6,317): `168 / 181 × 6317`
+- % included: `168 / 181 × 100 = 92.8%`
+- Projected inclusions (of remaining 3,168): `168 / 181 × 3168 = 2941 Articles`
 
 ### Stage 4 – Describes interventions with cash-releasing benefits  
 Stage 4 was run with three different inclusion modes:
@@ -32,20 +32,20 @@ Stage 4 was run with three different inclusion modes:
 **Strict mode** (ALL 5 criteria must be satisfied)  
 - Included: **0**  
 - Excluded: **168**  
-- % excluded: `168 / 168 × 100`
-- Projected exclusions (of 6,317): `168 / 168 × 6317` 
+- % included: `0 / 168 × 100 = 0%`
+- Projected inclusions (of remaining 2,941): `168 / 168 × 2941 = 0 Articles` 
 
 **Moderate mode** (direct cash signal + credible route + no harm)  
 - Included: **4**  
 - Excluded: **164**
-- % excluded: `4 / 168 × 100`
-- Projected exclusions (of 6,317): `4 / 168 × 6317` 
+- % included: `4 / 168 × 100 = 2.38%`
+- Projected inclusions (of remaining 2,941): `4 / 168 × 2941 = 70 Articles` 
 
 **Signal mode** (any direct/phrase cash signal)  
 - Included: **9**  
 - Excluded: **159**  
-- % excluded: `9 / 168 × 100`
-- Projected exclusions (of 6,317): `9 / 168 × 6317` 
+- % excluded: `9 / 168 × 100 = 5.36%`
+- Projected exclusions (of remaining 2,941): `9 / 168 × 2941 = 158 Articles` 
 
 ### Stage 5 – Relevant to NHS Three Shifts (Community, Digital, Prevention)  
 
@@ -60,31 +60,26 @@ Stage 5 was applied **after each Stage 4 stream**, producing three parallel outc
 **Stage 4 Moderate → Stage 5**
 - Included: **2**
 - Excluded: **4**
-- % excluded: `2 / 4 × 100`
-- Projected exclusions (of 6,317): `2 / 4 × 6317` 
+- % excluded: `2 / 4 × 100 = 50%`
+- Projected exclusions (of remaining 70): `2 / 4 × 70 = 35 Articles` 
 
 **Stage 4 Signal → Stage 5**
  - Included: **5**
 - Excluded: **9**
-- % excluded: `5 / 9 × 100`
-- Projected exclusions (of 6,317): `5 / 9 × 6317` 
+- % excluded: `5 / 9 × 100 = 55.56%`
+- Projected exclusions (of remaining 158): `5 / 9 × 158 = 88 Articles` 
 ---
 
-## 📊 Summary Table
+## Summary Table
 
-| Stage | Mode      | Included (sample) | Excluded (sample) | % Excluded | Projected exclusions (6,317) |
-|-------|-----------|-------------------|-------------------|------------|-------------------------------|
-| 1. English + 2019–2025 | – | n1_incl | n1_excl | … | … |
-| 2. UK study | – | n2_incl | n2_excl | … | … |
-| 3. NHS/health/social care | – | n3_incl | n3_excl | … | … |
-| 4. Cash-releasing | Strict | n4s_incl | n4s_excl | … | … |
-| 4. Cash-releasing | Moderate | n4m_incl | n4m_excl | … | … |
-| 4. Cash-releasing | Signal | n4sig_incl | n4sig_excl | … | … |
-| 5. NHS Three Shifts | – | n5_incl | n5_excl | … | … |
-
----
-
-## 📝 Notes & Next Steps
-- **Stage 4 sensitivity:** Strict is very conservative (few includes), signal is permissive (many includes). Moderate provides a balanced middle ground for abstracts.  
-- **Validation needed:** All criteria require benchmarking against manual review before applying to the full set.  
-- **Cumulative effect:** After 5 stages (using preferred Stage 4 mode), 361 → XXX remain. Scaling to 6,317 suggests ~YYY remain.  
+| Stage | Mode             | Included (sample) | Excluded (sample) | % Included | Projected inclusions (population) |
+|-------|------------------|-------------------|-------------------|------------|-----------------------------------|
+| 1. English + 2019–2025   | –                 | 358               | 3                 | 99.1%      | 6,265 |
+| 2. UK study              | –                 | 181               | 177               | 50.6%      | 3,168 |
+| 3. NHS/health/social care| –                 | 168               | 13                | 92.8%      | 2,941 |
+| 4. Cash-releasing        | Strict            | 0                 | 168               | 0%         | 0     |
+| 4. Cash-releasing        | Moderate          | 4                 | 164               | 2.4%       | 70    |
+| 4. Cash-releasing        | Signal            | 9                 | 159               | 5.4%       | 158   |
+| 5. NHS Three Shifts      | Strict → 5        | 0                 | 0                 | NA         | NA    |
+| 5. NHS Three Shifts      | Moderate → 5      | 2                 | 2                 | 50.0%      | 35    |
+| 5. NHS Three Shifts      | Signal → 5        | 5                 | 4                 | 55.6%      | 88    |
