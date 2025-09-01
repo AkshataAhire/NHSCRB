@@ -48,7 +48,7 @@ def main():
 
     # ---- 4. Iterate over rows ----
     for _, row in df.iterrows():
-        uid = row["Unique_ID"]
+        uid = row["id"]
         title = row.get("Title", "")
         abstract = row.get("Abstract", "")
         # Include full row as metadata if you want to surface hints later (not used directly here)
@@ -68,7 +68,7 @@ def main():
         # Parse + normalize output
         parsed = safe_json_loads(raw) or {}
         normalized = normalize_result(parsed, mode=stage4_mode)
-        normalized["Unique_ID"] = uid
+        normalized["id"] = uid
 
         results.append(normalized)
 
@@ -77,7 +77,7 @@ def main():
 
     # ---- 5. Merge results back ----
     res_df = pd.DataFrame(results)
-    merged = df.merge(res_df, on="Unique_ID", how="left")
+    merged = df.merge(res_df, on="id", how="left")
 
     # ---- 6. Save ----
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -86,3 +86,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
