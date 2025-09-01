@@ -80,7 +80,7 @@ def main():
     # ---- 6. Save ----
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     merged.to_csv(args.output, index=False)
-    print(f"✅ Stage 5 screening complete. Wrote: {args.output}")
+    print(f"Stage 5 screening complete. Wrote: {args.output}")
 
 
 if __name__ == "__main__":
