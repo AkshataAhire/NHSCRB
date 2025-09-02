@@ -1,4 +1,4 @@
-# utils_6.py — Stage 6 helpers (Cash-releasing benefits with 5 core criteria)
+# utils_7.py — Stage 7 helpers (Cash-releasing benefits with 5 core criteria)
 
 import json
 from typing import Dict, Any, Optional
@@ -102,8 +102,8 @@ def build_user_prompt(unique_id: str, title: str, abstract: str, metadata: Dict[
 # -----------------------------
 def normalize_result(obj: Dict[str, Any], mode: str = "moderate") -> Dict[str, Any]:
     """
-    Map GPT JSON -> Stage 4 outputs:
-      include_stage4, reason_stage4, cash_release_flags, confidence_stage4
+    Map GPT JSON -> Stage 7 outputs:
+      include_stage7, reason_stage7, cash_release_flags, confidence_stage7
     """
     flags = {k: _b(obj.get(k, False)) for k in ALL_KEYS}
     include = derive_include(flags, mode=mode)
@@ -113,9 +113,9 @@ def normalize_result(obj: Dict[str, Any], mode: str = "moderate") -> Dict[str, A
     positives = [k for k, v in flags.items() if v]
 
     return {
-        "include_stage4": include,
-        "reason_stage4": reason,
+        "include_stage7": include,
+        "reason_stage7": reason,
         "cash_release_flags": "; ".join(positives),
-        "confidence_stage4": confidence,
+        "confidence_stage7": confidence,
     }
 
