@@ -1,4 +1,4 @@
-# utils_5.py — Stage 5 helpers: NHS Three Shifts (with main_shift)
+# utils_6.py — Stage 6 helpers: NHS Three Shifts (with main_shift)
 
 import json
 from typing import Dict, Any, Optional, List
@@ -83,9 +83,9 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
     confidence = _clamp_conf(obj.get("confidence", 0.0))
 
     return {
-        "include_stage5": include,
-        "reason_stage5": reason,
+        "include_stage6": include,
+        "reason_stage6": reason,
         "main_shift": main_shift,
         "shifts_detected": "; ".join(shifts),
-        "confidence_stage5": confidence,
+        "confidence_stage6": confidence,
     }
