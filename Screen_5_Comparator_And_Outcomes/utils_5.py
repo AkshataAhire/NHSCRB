@@ -128,9 +128,9 @@ def _clamp_conf(x: Any) -> float:
 
 def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Map model JSON -> Stage-4 columns.
-      include_stage4, reason_stage4, has_comparator, detected_comparator,
-      has_primary_outcomes, detected_outcomes, confidence_stage4
+    Map model JSON -> Stage-5 columns.
+      include_stage5, reason_stage5, has_comparator, detected_comparator,
+      has_primary_outcomes, detected_outcomes, confidence_stage5
 
     Safety: require BOTH has_comparator and has_primary_outcomes to be True; else include=False.
     """
@@ -149,11 +149,11 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
         include = False
 
     return {
-        "include_stage4": include,
-        "reason_stage4": reason,
+        "include_stage5": include,
+        "reason_stage5": reason,
         "has_comparator": has_comparator,
         "detected_comparator": detected_comparator,
         "has_primary_outcomes": has_primary_outcomes,
         "detected_outcomes": detected_outcomes,
-        "confidence_stage4": confidence,
+        "confidence_stage5": confidence,
     }
