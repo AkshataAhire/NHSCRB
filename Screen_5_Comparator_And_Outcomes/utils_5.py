@@ -1,4 +1,4 @@
-# utils_4.py — Stage 4 helpers: “Uses comparison group AND measures primary outcomes (cost/impact)”
+# utils_5.py — Stage 5 helpers: “Uses comparison group AND measures primary outcomes (cost/impact)”
 
 import json
 from typing import Dict, Any, Optional, List
