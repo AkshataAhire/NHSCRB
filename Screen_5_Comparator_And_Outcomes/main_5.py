@@ -6,7 +6,7 @@ import argparse
 import pandas as pd
 
 from openai_client import create_openai_client, call_gpt_api
-from utils_4 import build_user_prompt, safe_json_loads, normalize_result
+from utils_5 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
 DEFAULT_OUTPUT = "data/screen_stage5_comparator_outcomes.csv"
@@ -59,7 +59,7 @@ def main():
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     out.to_csv(args.output, index=False)
-    print(f"Stage 4 screening complete. Wrote: {args.output}")
+    print(f"Stage 5 screening complete. Wrote: {args.output}")
 
 if __name__ == "__main__":
     main()
