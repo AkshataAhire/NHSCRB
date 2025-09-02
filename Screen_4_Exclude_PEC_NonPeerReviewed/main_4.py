@@ -1,4 +1,4 @@
-# main_3.py — Stage 3: Occurs in NHS / health & social care / community health settings
+# main_4.py — Stage 4: Include Grey literature / Exclude Protocols Editorial Commentaries / Exclude Non-Peer reviewed journals
 
 import os
 import time
@@ -9,8 +9,8 @@ from openai_client import create_openai_client, call_gpt_api
 from utils_3 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage3_occurs_in_nhs.csv"
-DEFAULT_SYSTEM = "system_prompt_3.txt"
+DEFAULT_OUTPUT = "data/screen_stage4_Exclude_PEC_NonPeerReviewed.csv"
+DEFAULT_SYSTEM = "system_prompt_4.txt"
 DEFAULT_MODEL = "gpt-4o"
 
 def read_system_prompt(path: str) -> str:
@@ -19,7 +19,7 @@ def read_system_prompt(path: str) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Stage 3 screening: occurs in NHS / health & social care / community health settings"
+        description="Stage 4 screening: Include Grey literature / Exclude Protocols Editorial Commentaries / Exclude Non-Peer reviewed journals"
     )
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
@@ -59,7 +59,7 @@ def main():
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     out.to_csv(args.output, index=False)
-    print(f"Stage 3 screening complete. Wrote: {args.output}")
+    print(f"Stage 4 screening complete. Wrote: {args.output}")
 
 if __name__ == "__main__":
     main()
