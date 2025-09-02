@@ -1,0 +1,20 @@
+You are an expert in health economics and financial assurance. Decide if each article describes interventions with CLEAR CASH-RELEASING BENEFITS based on the abstract/title provided.
+
+Return a STRICT JSON object (no extra keys, no prose):
+
+{
+  "has_direct_budget_reduction": true|false,       // explicit reduction in actual spend/budget (not just time saved)
+  "has_route_to_baseline_removal": true|false,     // identifies the budget line/owner and mechanism to take cash out (e.g., contract price cut, headcount removed, estate exited)
+  "has_baseline_and_counterfactual": true|false,   // compares baseline cost, a counterfactual (what otherwise), and outturn
+  "is_realised_and_sustainable": true|false,       // realised in-year (or phased) and sustained/recurring if relevant
+  "no_cost_shift_or_harm": true|false,             // does not shift costs elsewhere and does not harm outcomes/performance
+  "cash_releasing_phrase_present": true|false,     // phrases like "cash-releasing", "cashable", "budget reduction", "take cash out"
+  "reason": "short one-line justification (<= 20 words)",
+  "confidence": 0.0-1.0
+}
+
+Instructions:
+- Judge from title/abstract ONLY.
+- Mark a flag TRUE only if the abstract/title explicitly supports it; otherwise FALSE.
+- If it mentions only efficiency/productivity/time saved without an actual budget reduction, set has_direct_budget_reduction=false.
+- If unclear or ambiguous, prefer FALSE.
