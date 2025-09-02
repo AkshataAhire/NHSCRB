@@ -9,7 +9,7 @@ cd "C:\Path\To\Projects"
 git clone -b dev https://github.com/AkshataAhire/NHSCRB.git NHSCRB
 
 # 3. Navigate into the Stage 1 screening folder
-cd "C:\Path\To\Projects\NHSCRB\screen_1_2019_2025_English"
+cd "C:\Path\To\Projects\NHSCRB\Screen_1_2019_2025_English"
 
 # 4. Create a Python virtual environment
 python -m venv .venv
@@ -34,3 +34,4 @@ python .\main_1.py --input .\data\sample_articles.csv --output .\data\screen_sta
 #   --model gpt-4o-mini  choose a different model
 #   --system system_prompt_1.txt  use a different system prompt file
 #   --sleep 0.5          add delay between API calls (avoid rate limits)
+
