@@ -1,0 +1,5 @@
+Inclusions and exclusions look valid on initial inspection.
+For inclusions, we noted that some articles were included where a trial was conducted in the UK but not necessarily totally UK specific e.g. 1 trial in UK, 2 trials in China
+For exclusions, the AI seems to be screening correctly, quite a lot of instances wher no context is given in the abstracts and the ai has flagged the setting as "Unknown".
+
+Further validation required.
