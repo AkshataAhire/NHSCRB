@@ -56,7 +56,7 @@ def main():
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     out.to_csv(args.output, index=False)
-    print(f"✅ Stage 4 screening complete. Wrote: {args.output}")
+    print(f"Stage 4 screening complete. Wrote: {args.output}")
 
 if __name__ == "__main__":
     main()
