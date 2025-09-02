@@ -1,4 +1,4 @@
-# main_5.py — Stage 5: NHS Three Shifts
+# main_6.py — Stage 6: NHS Three Shifts
 # Determines if each article aligns with at least one NHS shift (Community, Digital, Prevention)
 # and identifies both the MAIN shift and all shifts detected.
 
@@ -8,12 +8,12 @@ import argparse
 import pandas as pd
 
 from openai_client import create_openai_client, call_gpt_api
-from utils_5 import build_user_prompt, safe_json_loads, normalize_result
+from utils_6 import build_user_prompt, safe_json_loads, normalize_result
 
 # ---- Defaults ----
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage5_three_shifts.csv"
-DEFAULT_SYSTEM = "system_prompt_5.txt"
+DEFAULT_OUTPUT = "data/screen_stage6_three_shifts.csv"
+DEFAULT_SYSTEM = "system_prompt_6.txt"
 DEFAULT_MODEL = "gpt-4o"
 
 
@@ -25,7 +25,7 @@ def read_system_prompt(path: str) -> str:
 
 def main():
     # ---- 1. CLI args ----
-    parser = argparse.ArgumentParser(description="Stage 5 screening: NHS Three Shifts")
+    parser = argparse.ArgumentParser(description="Stage 6 screening: NHS Three Shifts")
     parser.add_argument("--input", default=DEFAULT_INPUT, help="Path to input CSV")
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Path to output CSV")
     parser.add_argument("--system", default=DEFAULT_SYSTEM, help="Path to system prompt file")
@@ -80,7 +80,7 @@ def main():
     # ---- 6. Save ----
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     merged.to_csv(args.output, index=False)
-    print(f"Stage 5 screening complete. Wrote: {args.output}")
+    print(f"Stage 6 screening complete. Wrote: {args.output}")
 
 
 if __name__ == "__main__":
