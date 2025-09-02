@@ -1,4 +1,4 @@
-# main_4.py — Stage 4: Cash-releasing benefits
+# main_6.py — Stage 6: Cash-releasing benefits
 # Uses a checklist (5 core criteria + 1 auxiliary phrase flag) and tiered inclusion logic.
 
 import os
@@ -22,7 +22,7 @@ def read_system_prompt(path: str) -> str:
 
 def main():
     # ---- 1. CLI args ----
-    parser = argparse.ArgumentParser(description="Stage 4 screening: Cash-releasing benefits")
+    parser = argparse.ArgumentParser(description="Stage 6 screening: Cash-releasing benefits")
     parser.add_argument("--input", default=DEFAULT_INPUT, help="Path to input CSV")
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Path to output CSV")
     parser.add_argument("--system", default=DEFAULT_SYSTEM, help="Path to system prompt file")
@@ -86,5 +86,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
