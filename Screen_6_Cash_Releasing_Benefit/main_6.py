@@ -11,8 +11,8 @@ from utils_4 import build_user_prompt, safe_json_loads, normalize_result
 
 # ---- Defaults ----
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage4_cash.csv"
-DEFAULT_SYSTEM = "system_prompt_4.txt"
+DEFAULT_OUTPUT = "data/screen_stage6_cash.csv"
+DEFAULT_SYSTEM = "system_prompt_6.txt"
 DEFAULT_MODEL = "gpt-4o"
 
 def read_system_prompt(path: str) -> str:
@@ -86,6 +86,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
