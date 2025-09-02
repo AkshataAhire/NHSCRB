@@ -1,4 +1,4 @@
-# main_4.py — Stage 4: Uses comparison group AND measures primary cost/impact outcomes
+# main_5.py — Stage 5: Uses comparison group AND measures primary cost/impact outcomes
 
 import os
 import time
@@ -9,8 +9,8 @@ from openai_client import create_openai_client, call_gpt_api
 from utils_4 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage4_comparator_outcomes.csv"
-DEFAULT_SYSTEM = "system_prompt_4.txt"
+DEFAULT_OUTPUT = "data/screen_stage5_comparator_outcomes.csv"
+DEFAULT_SYSTEM = "system_prompt_5.txt"
 DEFAULT_MODEL = "gpt-4o"
 
 def read_system_prompt(path: str) -> str:
@@ -19,7 +19,7 @@ def read_system_prompt(path: str) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Stage 4 screening: comparator present AND primary outcomes (cost/impact) measured"
+        description="Stage 5 screening: comparator present AND primary outcomes (cost/impact) measured"
     )
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
