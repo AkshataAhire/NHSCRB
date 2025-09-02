@@ -1,4 +1,4 @@
-# utils_4.py — Stage 4 helpers (Cash-releasing benefits with 5 core criteria)
+# utils_6.py — Stage 6 helpers (Cash-releasing benefits with 5 core criteria)
 
 import json
 from typing import Dict, Any, Optional
@@ -118,3 +118,4 @@ def normalize_result(obj: Dict[str, Any], mode: str = "moderate") -> Dict[str, A
         "cash_release_flags": "; ".join(positives),
         "confidence_stage4": confidence,
     }
+
