@@ -1,15 +1,14 @@
 # main_4.py — Stage 4: Include Grey literature / Exclude Protocols Editorial Commentaries / Exclude Non-Peer reviewed journals
-
 import os
 import time
 import argparse
 import pandas as pd
 
 from openai_client import create_openai_client, call_gpt_api
-from utils_3 import build_user_prompt, safe_json_loads, normalize_result
+from utils_4 import build_user_prompt, safe_json_loads, normalize_result
 
 DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage4_Exclude_PEC_NonPeerReviewed.csv"
+DEFAULT_OUTPUT = "data/screen_stage4_publication_type.csv"
 DEFAULT_SYSTEM = "system_prompt_4.txt"
 DEFAULT_MODEL = "gpt-4o"
 
@@ -18,9 +17,7 @@ def read_system_prompt(path: str) -> str:
         return f.read()
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Stage 4 screening: Include Grey literature / Exclude Protocols Editorial Commentaries / Exclude Non-Peer reviewed journals"
-    )
+    parser = argparse.ArgumentParser(description="Stage 4 screening: Publication type filter")
     parser.add_argument("--input", default=DEFAULT_INPUT)
     parser.add_argument("--output", default=DEFAULT_OUTPUT)
     parser.add_argument("--system", default=DEFAULT_SYSTEM)
@@ -38,7 +35,7 @@ def main():
 
     rows = []
     for idx, row in df.iterrows():
-        uid = row["id"]
+        uid = row["Unique_ID"]
         title = row.get("Title", "")
         abstract = row.get("Abstract", "")
         metadata = {k: (None if pd.isna(v) else v) for k, v in row.to_dict().items()}
@@ -48,18 +45,18 @@ def main():
 
         parsed = safe_json_loads(raw) or {}
         normalized = normalize_result(parsed)
-        normalized["id"] = uid
+        normalized["Unique_ID"] = uid
         rows.append(normalized)
 
         if args.sleep > 0:
             time.sleep(args.sleep)
 
     res = pd.DataFrame(rows)
-    out = df.merge(res, on="id", how="left")
+    out = df.merge(res, on="Unique_ID", how="left")
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     out.to_csv(args.output, index=False)
-    print(f"Stage 4 screening complete. Wrote: {args.output}")
+    print(f"✅ Stage 4 screening complete. Wrote: {args.output}")
 
 if __name__ == "__main__":
     main()
