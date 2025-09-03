@@ -2,7 +2,8 @@
 
 ## Inclusion Rule
 - Study is conducted in the **UK**, OR  
-- Applied to a **UK setting** (including NHS, England, Wales, Scotland, Northern Ireland).  
+- Applied to a **UK setting** (including NHS, England, Wales, Scotland, Northern Ireland).
+- Where there is no explicit setting provided, UK or not UK, the articles is included but flagged for Review in manual screening stage 8 (if it gets that far) 
 
 ---
 
