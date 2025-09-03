@@ -123,9 +123,9 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
     detected_setting = _normalize_detected_setting(obj.get("detected_setting", "Unknown"))
     confidence = _clamp_conf(obj.get("confidence", 0.0))
 
-    # Safety: if detected_setting is not 'UK', force include False
-    if detected_setting != "UK":
-        include = False
+    # Safety: if detected_setting is 'Unknown', force include False
+    if detected_setting != "Unknown":
+        include = True
 
     return {
         "include_stage2": include,
@@ -133,3 +133,4 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
         "detected_setting": detected_setting,
         "confidence_stage2": confidence,
     }
+
