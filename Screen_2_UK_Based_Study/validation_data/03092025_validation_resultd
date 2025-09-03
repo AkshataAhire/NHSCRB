@@ -1,0 +1,32 @@
+# Stage 2 – UK Study / UK Setting
+
+## Inclusion Rule
+- Study is conducted in the **UK**, OR  
+- Applied to a **UK setting** (including NHS, England, Wales, Scotland, Northern Ireland).  
+
+---
+
+## Confusion Matrix
+
+|                | Freddie Include | Freddie Exclude |
+|----------------|-----------------|-----------------|
+| **API Include** | 24              | 0               |
+| **API Exclude** | 14              | 12              |
+
+---
+
+## Performance Metrics
+- **True Positives (TP):** 24  
+- **True Negatives (TN):** 12  
+- **False Positives (FP):** 0  
+- **False Negatives (FN):** 14  
+- **Accuracy:** 72%  
+- **Precision:** 63.2%  
+
+---
+
+## Notes
+- ✅ No false positives → API was conservative (didn’t wrongly include non-UK studies).  
+- ❌ 14 false negatives → API failed to recognise genuine UK-based studies.  
+- Error pattern → the model seems to only pick up **explicit UK mentions** (e.g. “NHS”, “England”), and under-detects more **implicit indicators**.  
+- Next step → review the 14 false negatives with Freddie to agree what subtler indicators should count as UK setting.  
