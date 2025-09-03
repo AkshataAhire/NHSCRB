@@ -125,7 +125,7 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
 
     # Safety: if detected_setting is 'Unknown', force include  True (Review)
     if detected_setting != "Unknown":
-        include = True (Review)
+        include = True
 
     return {
         "include_stage2": include,
@@ -133,5 +133,6 @@ def normalize_result(obj: Dict[str, Any]) -> Dict[str, Any]:
         "detected_setting": detected_setting,
         "confidence_stage2": confidence,
     }
+
 
 
