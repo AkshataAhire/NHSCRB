@@ -10,19 +10,19 @@
 
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
-| **API Include** | 19              | 0               |
-| **API Exclude** | 3               | 1               |
+| **API Include** | 30              | 0               |
+| **API Exclude** | 3               | 3               |
 
 ---
 
 ## Performance Metrics
-- **True Positives (TP):** 19  
-- **True Negatives (TN):** 1  
+- **True Positives (TP):** 30  
+- **True Negatives (TN):** 3  
 - **False Positives (FP):** 0  
 - **False Negatives (FN):** 3  
 
-- **Accuracy:** 86.9%  
-- **Precision:** 86.4%  
+- **Accuracy:** 91.6%  
+- **Precision:** 90.9%  
 
 ---
 
