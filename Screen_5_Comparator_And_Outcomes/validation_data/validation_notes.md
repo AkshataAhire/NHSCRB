@@ -1,4 +1,7 @@
-# Stage 5 – [Insert Stage 5 Rule Title]
+# Stage 5 – Comparator and outcomes
+
+A) Uses a comparison group (e.g., business-as-usual/usual care/standard care, no intervention, do nothing, no change, control, comparator, placebo), AND
+B) Measures primary outcomes related to cost or impact (e.g., cost reductions, costs/QALYs, change in outcome, change in impact, effectiveness, utilization/throughput, time, safety, clinical outcomes, patient-reported outcomes).
 
 ## Confusion Matrix
 
