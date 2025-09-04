@@ -7,15 +7,15 @@ B) Measures primary outcomes related to cost or impact (e.g., cost reductions, c
 
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
-| **API Include** | 9               | 9               |
+| **API Include** | 10              | 8               |
 | **API Exclude** | 3               | 9               |
 
 ---
 
 ## Performance Metrics
-- **True Positives (TP):** 9  
+- **True Positives (TP):** 10  
 - **True Negatives (TN):** 9  
-- **False Positives (FP):** 9  
+- **False Positives (FP):** 8  
 - **False Negatives (FN):** 3  
 
 - **Accuracy:** 60%  
