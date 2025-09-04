@@ -11,27 +11,22 @@
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
 | **API Include** | 19              | 0               |
-| **API Exclude** | 1               | 3               |
+| **API Exclude** | 3               | 1               |
 
 ---
 
 ## Performance Metrics
 - **True Positives (TP):** 19  
-- **True Negatives (TN):** 3  
+- **True Negatives (TN):** 1  
 - **False Positives (FP):** 0  
-- **False Negatives (FN):** 1  
+- **False Negatives (FN):** 3  
 
-- **Accuracy:** 95.7%  
-- **Precision:** 95.0%  
+- **Accuracy:** 86.9%  
+- **Precision:** 86.4%  
 
 ---
 
 ## Notes
-- ❌ 1 false negative → **J532**  
-  - **API reason:** *“Appears to be an editorial/commentary on policy experiences.”*  
-  - **API classification:** *Editorial/Commentary* (confidence 0.9) → excluded  
-  - **Freddie screen:** *Include*  
-  - **Freddie reason:** *Correct study type*  
-- Disagreement likely arises from subjective judgement: API read it as commentary, Freddie treated it as valid study-type.  
-
+- ❌ 3 false negatives
+- 
 ---
