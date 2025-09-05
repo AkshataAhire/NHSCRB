@@ -42,7 +42,7 @@ def main():
 
     # Optional runtime behaviour for inclusion rule:
     #   STAGE7_MODE in {"strict", "moderate", "signal"} (default "moderate")
-    stage7_mode = os.getenv("STAGE7_MODE", "moderate").lower()
+    stage7_mode = os.getenv("STAGE7_MODE", "strict").lower()
 
     results = []
 
