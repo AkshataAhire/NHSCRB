@@ -11,19 +11,19 @@ EXCLUDE if none apply or evidence is unclear/ambiguous.
 
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
-| **API Include** | 3              | 1               |
-| **API Exclude** | 6              | 8               |
+| **API Include** | 6              | 1               |
+| **API Exclude** | 8              | 13               |
 
 ---
 
 ## Performance Metrics
-- **True Positives (TP):** 3  
-- **True Negatives (TN):** 8  
+- **True Positives (TP):** 6  
+- **True Negatives (TN):** 13  
 - **False Positives (FP):** 1  
-- **False Negatives (FN):** 6  
+- **False Negatives (FN):** 8  
 
-- **Accuracy:** 61.1%  
-- **Precision:** 33.3%  
+- **Accuracy:** 67.8%  
+- **Precision:** 42.8%  
 
 ---
 
