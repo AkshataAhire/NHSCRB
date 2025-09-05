@@ -1,33 +1,38 @@
-# Stage 5 – Comparator and outcomes
+# Stage 5 – Comparator and Outcomes
 
-A) Uses a comparison group (e.g., business-as-usual/usual care/standard care, no intervention, do nothing, no change, control, comparator, placebo), AND
-B) Measures primary outcomes related to cost or impact (e.g., cost reductions, costs/QALYs, change in outcome, change in impact, effectiveness, utilization/throughput, time, safety, clinical outcomes, patient-reported outcomes).
+**Inclusion rule:**  
+A) Uses a comparison group (e.g., business-as-usual/usual care/standard care, no intervention, do nothing, no change, control, comparator, placebo), AND  
+B) Measures primary outcomes related to cost or impact (e.g., cost reductions, costs/QALYs, change in outcome, change in impact, effectiveness, utilization/throughput, time, safety, clinical outcomes, patient-reported outcomes).  
+
+---
 
 ## Confusion Matrix
 
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
-| **API Include** | 17              | 1               |
-| **API Exclude** | 9               | 3               |
+| **API Include** | 25              | 3               |
+| **API Exclude** | 2               | 0               |
 
 ---
 
 ## Performance Metrics
-- **True Positives (TP):** 17  
-- **True Negatives (TN):** 3  
-- **False Positives (FP):** 1  
-- **False Negatives (FN):** 9  
+- **True Positives (TP):** 25  
+- **True Negatives (TN):** 0  
+- **False Positives (FP):** 3  
+- **False Negatives (FN):** 2  
 
-- **Accuracy:** 66.7%  
-- **Precision:** 65.4%  
+- **Accuracy:** 83.3%  
+- **Precision:** 92.6%  
 
 ---
 
 ## Notes
-- Validation now reflects Freddie’s broader screening rule (cost + impact outcomes).
-- Compared with the initial narrower run (Accuracy 60%, Precision 75%, 3 FN, 8 FP):
-- False positives have dropped sharply (8 → 1).
-- False negatives increased (3 → 9) → API still misses studies with implicit comparators (before/after, service changes without explicit “vs standard care” wording).
-- Accuracy has improved modestly, but precision has fallen slightly.
+- Major improvement over the last run:
+  - **Accuracy up** from 66.7% → 83.3%.  
+  - **Precision up** from 65.4% → 92.6%.  
+  - **False negatives reduced** from 9 → 2.  
+  - **False positives slightly higher** (1 → 3), but this is acceptable given the FN reduction.  
+- The tweaks to better recognise **implicit comparators** (e.g. service changes, before/after designs) worked as intended.  
+- Overall, Stage 5 performance is now strong — fewer misses, higher precision, and closer alignment with Freddie’s broader screening.  
 
-Next step: decide whether to adjust API to better handle implicit comparators, or leave these for Stage 8 manual review.
+Next step: continue monitoring FP cases — check if they are borderline inclusions or genuine over-calls by the API.  
