@@ -1,0 +1,33 @@
+# Stage 1 – English + 2019–2025
+
+## Inclusion Rule
+- Article must be written in **English**  
+- Published between **2019–01–01 and 2025–12–31 (inclusive)**  
+
+---
+
+## Confusion Matrix
+
+|                | Freddie Include | Freddie Exclude |
+|----------------|-----------------|-----------------|
+| **API Include** | 197              | 0               |
+| **API Exclude** | 3               | 0               |
+
+---
+
+## Performance Metrics
+- **True Positives (TP):** 197  
+- **True Negatives (TN):** 0  
+- **False Positives (FP):** 0  
+- **False Negatives (FN):** 3  
+- **Accuracy:** 98.5%  
+- **Precision:** 98.5%  
+
+---
+
+## Notes
+3 false negatives were identified.
+
+As in the 50-article validation, all relate to metadata mismatches where the API correctly detected earlier publication dates (e.g. 2017) despite metadata marking them as 2019.
+
+API judgement likely correct → Freddie “Includes” are overestimates here.
