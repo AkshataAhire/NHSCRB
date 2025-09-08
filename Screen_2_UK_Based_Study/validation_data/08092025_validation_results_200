@@ -1,0 +1,37 @@
+# Stage 2 – UK Study / UK Setting
+
+## Updated Inclusion Rule
+- Study is conducted in the **UK**, OR  
+- Applied to a **UK setting** (including NHS, England, Wales, Scotland, Northern Ireland).
+- If the setting is unclear/unstated, include but flag for Stage 8 manual review.
+
+---
+
+## Confusion Matrix
+
+|                | Freddie Include | Freddie Exclude |
+|----------------|-----------------|-----------------|
+| **API Include** | 135             | 31              |
+| **API Exclude** | 2               | 29             |
+
+---
+
+## Performance Metrics
+- **True Positives (TP):** 135 
+- **True Negatives (TN):** 29  
+- **False Positives (FP):** 31  
+- **False Negatives (FN):** 2  
+- **Accuracy:** 83.2%  
+- **Precision:** 98.5%  
+
+---
+
+2 False Negatives: both genuinely UK-based but API missed the setting (edge cases with implied rather than explicit UK context).
+
+31 False Positives:
+
+28 flagged correctly for Stage 8 (unclear/unstated UK setting).
+
+3 explicitly mention the UK setting → need review with Freddie.
+
+Pattern consistent with the 50-article validation: Cochrane/systematic reviews and international studies often included due to “flag-if-unclear” rule.
