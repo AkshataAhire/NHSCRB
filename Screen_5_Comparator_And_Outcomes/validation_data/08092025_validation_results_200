@@ -10,35 +10,20 @@ B) Measures primary outcomes related to cost or impact (e.g., cost reductions, c
 
 |                | Freddie Include | Freddie Exclude |
 |----------------|-----------------|-----------------|
-| **API Include** | 83              | 10               |
-| **API Exclude** | 10              | 6               |
+| **API Include** | 93              | 10               |
+| **API Exclude** | 17              | 13               |
 
 ---
 
 ## Performance Metrics
-- **True Positives (TP):** 83  
-- **True Negatives (TN):** 6  
+- **True Positives (TP):** 93  
+- **True Negatives (TN):** 13  
 - **False Positives (FP):** 10  
-- **False Negatives (FN):** 10  
+- **False Negatives (FN):** 17  
 
-- **Accuracy:** 81.7%  
-- **Precision:** 89.2%  
+- **Accuracy:** 79.6%  
+- **Precision:** 84.5%  
 
 ---
 
 ## Notes
-- Compared with the 50-article validation:
-
-Accuracy is broadly consistent (83.3% → 81.7%).
-
-Precision remains high (92.6% → 89.2%).
-
-FN count increased (2 → 10), but so did dataset size.
-
-FP also rose (3 → 10).
-
-API continues to miss some implicit comparator designs (before/after studies, service changes not explicitly labelled as comparators).
-
-A number of FPs are borderline inclusions, with comparators and outcomes present but limited relevance.
-
-Overall, performance is stable at scale — but further tuning for implicit comparators may reduce FN further.ng FP cases — check if they are borderline inclusions or genuine over-calls by the API.  
