@@ -1,0 +1,36 @@
+# Stage 3 – Occurs in NHS / Health & Social Care / Community Health Settings
+
+## Inclusion Rule
+- Study occurs in:  
+  - **NHS settings (any level)**, OR  
+  - **Health & Social Care services**, OR  
+  - **Community health settings** (e.g., hospitals, primary care/GP, outpatient/ambulatory clinics, community clinics, patients' homes).  
+
+---
+
+## Confusion Matrix
+
+|                | Freddie Include | Freddie Exclude |
+|----------------|-----------------|-----------------|
+| **API Include** | 150              | 3               |
+| **API Exclude** | 8                | 5               |
+
+---
+
+## Performance Metrics
+- **True Positives (TP):** 150
+- **True Negatives (TN):** 5  
+- **False Positives (FP):** 3  
+- **False Negatives (FN):** 8  
+
+- **Accuracy:** 93.4%  
+- **Precision:** 94.9%  
+
+---
+
+## Notes
+8 False Negatives – all edge cases where the healthcare setting is implied but not explicitly named.
+ 3 False Positives – cases where API picked up a setting signal but Freddie judged it out-of-scope.
+ Overall: much improved compared to earlier runs (FN reduced, precision now very high).
+
+Current rule generalises well across 200 articles with balanced accuracy + precision.
