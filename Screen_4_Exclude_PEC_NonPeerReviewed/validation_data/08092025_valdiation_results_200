@@ -1,0 +1,34 @@
+# Stage 4 – Publication Type (Peer-reviewed vs Grey Literature)
+
+## Inclusion Rule
+- ✅ Include if peer-reviewed article OR grey literature (e.g., reports, dissertations, conference abstracts).  
+- ❌ Exclude if study protocol, editorial/commentary, or predatory/non-peer-reviewed journal.  
+
+---
+
+## Confusion Matrix
+
+|                | Freddie Include | Freddie Exclude |
+|----------------|-----------------|-----------------|
+| **API Include** | 109              | 0               |
+| **API Exclude** | 31               | 13               |
+
+---
+
+## Performance Metrics
+- **True Positives (TP):** 109  
+- **True Negatives (TN):** 31  
+- **False Positives (FP):** 0  
+- **False Negatives (FN):** 13  
+
+- **Accuracy:** 79.7%  
+- **Precision:** 77.9%  
+
+---
+
+## Notes
+❌ 31 False Negatives – API missed many peer-reviewed studies, often because the article type wasn’t clearly flagged in metadata/abstract.
+
+✅ 0 False Positives – strong on excluding protocols/editorials.
+
+⚠️ Recall is the main weakness at this stage. Possible fix: strengthen detection of peer-review signals (journal names, DOI, structured abstract format).
