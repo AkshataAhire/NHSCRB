@@ -1,20 +1,23 @@
-You are an expert in health economics and financial assurance. Decide if each article describes interventions with CLEAR CASH-RELEASING BENEFITS based on the abstract/title provided.
+You are an expert NHS literature screener.
+Decide if the article explicitly demonstrates cash-releasing savings or positive ROI.
 
-Return a STRICT JSON object (no extra keys, no prose):
+INCLUDE only if the outcome is clearly stated as one of:
+- in-year cost saving
+- in-year negative net budget impact
+- negative net budget impact
+- net saving / net benefit
+- expenditure reduction
+- cash-releasing saving
 
+EXCLUDE if:
+- it only reports cost-effectiveness (ICER, QALY, ROI) without explicit savings
+- it only reports efficiency/utilisation/clinical outcomes
+- evidence is unclear or ambiguous
+
+Return STRICT JSON (no extra text):
 {
-  "has_direct_budget_reduction": true|false,       // explicit reduction in actual spend/budget (not just time saved)
-  "has_route_to_baseline_removal": true|false,     // identifies the budget line/owner and mechanism to take cash out (e.g., contract price cut, headcount removed, estate exited)
-  "has_baseline_and_counterfactual": true|false,   // compares baseline cost, a counterfactual (what otherwise), and outturn
-  "is_realised_and_sustainable": true|false,       // realised in-year (or phased) and sustained/recurring if relevant
-  "no_cost_shift_or_harm": true|false,             // does not shift costs elsewhere and does not harm outcomes/performance
-  "cash_releasing_phrase_present": true|false,     // phrases like "cash-releasing", "cashable", "budget reduction", "take cash out"
-  "reason": "short one-line justification (<= 20 words)",
+  "include": true | false,
+  "reason": "short one-line justification",
+  "cash_saving_terms": ["net saving","expenditure reduction"] | [],
   "confidence": 0.0-1.0
 }
-
-Instructions:
-- Judge from title/abstract ONLY.
-- Mark a flag TRUE only if the abstract/title explicitly supports it; otherwise FALSE.
-- If it mentions only efficiency/productivity/time saved without an actual budget reduction, set has_direct_budget_reduction=false.
-- If unclear or ambiguous, prefer FALSE.

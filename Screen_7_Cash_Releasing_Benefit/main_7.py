@@ -1,5 +1,4 @@
-# main_7.py — Stage 7: Cash-releasing benefits
-# Uses a checklist (5 core criteria + 1 auxiliary phrase flag) and tiered inclusion logic.
+# main_7.py — Stage 7: Cash-Releasing Benefit
 
 import os
 import time
@@ -9,84 +8,70 @@ import pandas as pd
 from openai_client import create_openai_client, call_gpt_api
 from utils_7 import build_user_prompt, safe_json_loads, normalize_result
 
-# ---- Defaults ----
-DEFAULT_INPUT = "data/sample_articles.csv"
-DEFAULT_OUTPUT = "data/screen_stage6_cash.csv"
-DEFAULT_SYSTEM = "system_prompt_7.txt"
-DEFAULT_MODEL = "gpt-4o"
 
 def read_system_prompt(path: str) -> str:
-    """Load the system prompt text that defines the checklist and JSON schema."""
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
+
 def main():
-    # ---- 1. CLI args ----
-    parser = argparse.ArgumentParser(description="Stage 7 screening: Cash-releasing benefits")
-    parser.add_argument("--input", default=DEFAULT_INPUT, help="Path to input CSV")
-    parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Path to output CSV")
-    parser.add_argument("--system", default=DEFAULT_SYSTEM, help="Path to system prompt file")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help="OpenAI model name")
-    parser.add_argument("--limit", type=int, default=None, help="Process only first N rows (for testing)")
-    parser.add_argument("--sleep", type=float, default=0.0, help="Delay (seconds) between API calls")
+    parser = argparse.ArgumentParser(
+        description="Stage 7 screening: Cash-releasing savings / ROI evidence"
+    )
+
+    # Support both old and new flags
+    parser.add_argument("--infile", "--input", dest="infile", required=True,
+                        help="Input CSV file with articles")
+    parser.add_argument("--outfile", "--output", dest="outfile", default="data/screen_stage7.csv",
+                        help="Output CSV file for results")
+    parser.add_argument("--id-col", default="id", help="Column name for unique article ID")
+    parser.add_argument("--title-col", default="Title", help="Column name for article title")
+    parser.add_argument("--abstract-col", default="Abstract", help="Column name for article abstract")
+    parser.add_argument("--model", default="gpt-4o", help="OpenAI model to use")
+    parser.add_argument("--system-prompt", default="system_prompt_7.txt", help="System prompt text file")
+    parser.add_argument("--sample-n", type=int, default=None, help="Optional: only process first N rows")
+    parser.add_argument("--sleep", type=float, default=0.0, help="Sleep interval between API calls")
+    parser.add_argument("--dry-run", action="store_true", help="Run without calling API (for debugging)")
+
     args = parser.parse_args()
 
-    # ---- 2. Load input ----
-    df = pd.read_csv(args.input)
-    if args.limit:
-        df = df.head(args.limit)
+    # Load input
+    df = pd.read_csv(args.infile)
+    if args.sample_n:
+        df = df.head(args.sample_n)
 
-    # ---- 3. Prep system prompt + API client ----
-    system_prompt = read_system_prompt(args.system)
+    system_prompt = read_system_prompt(args.system_prompt)
     client = create_openai_client()
 
-    # Optional runtime behaviour for inclusion rule:
-    #   STAGE7_MODE in {"strict", "moderate", "signal"} (default "moderate")
-    stage7_mode = os.getenv("STAGE7_MODE", "strict").lower()
-
-    results = []
-
-    # ---- 4. Iterate over rows ----
-    for _, row in df.iterrows():
-        uid = row["id"]
-        title = row.get("Title", "")
-        abstract = row.get("Abstract", "")
-        # Include full row as metadata if you want to surface hints later (not used directly here)
+    rows = []
+    for idx, row in df.iterrows():
+        uid = row.get(args.id_col, f"row_{idx}")
+        title = row.get(args.title_col, "")
+        abstract = row.get(args.abstract_col, "")
         metadata = {k: (None if pd.isna(v) else v) for k, v in row.to_dict().items()}
 
-        # Build user prompt
         user_prompt = build_user_prompt(uid, title, abstract, metadata)
 
-        # Call GPT API
-        raw = call_gpt_api(
-            client=client,
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-            model=args.model,
-        )
+        if args.dry_run:
+            raw = '{"include": false, "reason": "dry run", "cash_releasing": false, "confidence": 0.0}'
+        else:
+            raw = call_gpt_api(client, system_prompt, user_prompt, model=args.model)
 
-        # Parse + normalize output
         parsed = safe_json_loads(raw) or {}
-        normalized = normalize_result(parsed, mode=stage7_mode)
+        normalized = normalize_result(parsed)
         normalized["id"] = uid
-
-        results.append(normalized)
+        rows.append(normalized)
 
         if args.sleep > 0:
             time.sleep(args.sleep)
 
-    # ---- 5. Merge results back ----
-    res_df = pd.DataFrame(results)
-    merged = df.merge(res_df, on="id", how="left")
+    res = pd.DataFrame(rows)
+    out = df.merge(res, on="id", how="left")
 
-    # ---- 6. Save ----
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
-    merged.to_csv(args.output, index=False)
-    print(f"Stage 7 screening complete. Wrote: {args.output} (mode={stage7_mode})")
+    os.makedirs(os.path.dirname(args.outfile), exist_ok=True)
+    out.to_csv(args.outfile, index=False)
+    print(f"Stage 7 screening complete. Wrote: {args.outfile}")
+
 
 if __name__ == "__main__":
     main()
-
-
-
-
