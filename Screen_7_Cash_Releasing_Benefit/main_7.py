@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 # main_7.py — Stage 7: Cash-Releasing Benefit
 
 import os
+import sys
 import time
 import argparse
 import pandas as pd
@@ -32,19 +34,33 @@ def main():
     parser.add_argument("--sample-n", type=int, default=None, help="Optional: only process first N rows")
     parser.add_argument("--sleep", type=float, default=0.0, help="Sleep interval between API calls")
     parser.add_argument("--dry-run", action="store_true", help="Run without calling API (for debugging)")
+    parser.add_argument("--progress-every", type=int, default=25,
+                        help="Print a plain progress line every N rows")
 
     args = parser.parse_args()
+
+    # Ensure live progress in PowerShell/terminals
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except Exception:
+        pass
 
     # Load input
     df = pd.read_csv(args.infile)
     if args.sample_n:
-        df = df.head(args.sample_n)
+        df = df.head(args.sample_n).copy()
+
+    total = len(df)
+    if total == 0:
+        print("⚠️ No rows to process.", flush=True)
+        return
 
     system_prompt = read_system_prompt(args.system_prompt)
     client = create_openai_client()
 
     rows = []
-    for idx, row in df.iterrows():
+
+    for i, (idx, row) in enumerate(df.iterrows(), start=1):
         uid = row.get(args.id_col, f"row_{idx}")
         title = row.get(args.title_col, "")
         abstract = row.get(args.abstract_col, "")
@@ -65,12 +81,16 @@ def main():
         if args.sleep > 0:
             time.sleep(args.sleep)
 
-    res = pd.DataFrame(rows)
-    out = df.merge(res, on="id", how="left")
+        # Progress print
+        if args.progress_every and (i % args.progress_every == 0 or i == 1 or i == total):
+            print(f"[PROGRESS] {i}/{total} (last id={uid})", flush=True)
 
-    os.makedirs(os.path.dirname(args.outfile), exist_ok=True)
+    res = pd.DataFrame(rows)
+    out = df.merge(res, left_on=args.id_col, right_on="id", how="left")
+
+    os.makedirs(os.path.dirname(args.outfile) or ".", exist_ok=True)
     out.to_csv(args.outfile, index=False)
-    print(f"Stage 7 screening complete. Wrote: {args.outfile}")
+    print(f"Stage 7 screening complete. Wrote: {args.outfile}", flush=True)
 
 
 if __name__ == "__main__":
